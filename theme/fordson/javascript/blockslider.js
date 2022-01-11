@@ -15,6 +15,7 @@ if (localStorage.getItem('blockslideropen') == 1) {
 
 // Luu trang thai collapse cua my courses
 $('#amycourses').click(function(){
+    console.log("clicked");
     var collapsecourseopen = localStorage.getItem('collapsecourse');
     
     if (collapsecourseopen == 1) {

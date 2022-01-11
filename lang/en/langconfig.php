@@ -59,3 +59,4 @@ $string['thisdirectionvertical'] = 'btt';
 $string['thislanguage'] = 'English';
 $string['thislanguageint'] = 'English';
 $string['thousandssep'] = ',';
+

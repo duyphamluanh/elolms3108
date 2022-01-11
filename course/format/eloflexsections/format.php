@@ -182,10 +182,12 @@ require_once($CFG->libdir.'/completionlib.php');
                 'datepassedclass' => $datepassedclass,
                 'displayname' => $displayname,
             );
-            
+
+            // Duy Edit
+            $progress = $progresses ? $progresses[$USER->id]->progress : [];
             // Get progress information and state
-            if (array_key_exists($activity->id, $progresses[$USER->id]->progress)) {
-                $thisprogress = $progresses[$USER->id]->progress[$activity->id];
+            if (array_key_exists($activity->id, $progress)) { // Duy
+                $thisprogress = $progress[$activity->id]; // Duy
                 $state = $thisprogress->completionstate;
                 $overrideby = $thisprogress->overrideby;
                 $date = userdate($thisprogress->timemodified);
@@ -194,6 +196,7 @@ require_once($CFG->libdir.'/completionlib.php');
                 $overrideby = 0;
                 $date = '';
             }
+
             // Work out how it corresponds to an icon
             switch($state) {
                 case COMPLETION_INCOMPLETE :
@@ -331,17 +334,17 @@ if (($deletesection = optional_param('deletesection', 0, PARAM_INT)) && confirm_
             <div class="tab-pane p-1" id="elosummary">
             <ul>
             <li><span>' . $nameobjectfor . '</span> ' .$course->fullname. '</li>';
-            if($course->educationlevel) {
+            if(isset($course->educationlevel)) {
                 $elocoursesummaryhtml .= '<li><span>'.$level.'</span> '.$course->educationlevel.'</li>';
             }
-            if ($course->time) {
+            if (isset($course->time)) {
                 $elocoursesummaryhtml .='<li><span>'.$duration.'</span> '.$course->time.'</li>';
             }
-            if ($course->firstrequired) {
+            if (isset($course->firstrequired)) {
                 $elocoursesummaryhtml .='<li><span>'.$conditionfirst.'</span> '.$course->firstrequired.'</li>';
             }
             $elocoursesummaryhtml.= '<li><span>'.$descriptionobject.'</span><br>'.$course->summary.'</li>';
-            if($course->file) {
+            if(isset($course->file)) {
                 $elocoursesummaryhtml .= '
                     <li><span>'.$downloadcontentobject.'</span>&nbsp;&nbsp;<a download="'.$course->file.'"'
                     . 'href="'.$course->file.'">'
@@ -392,7 +395,7 @@ if (($deletesection = optional_param('deletesection', 0, PARAM_INT)) && confirm_
         list($data, $template) = calendar_get_view($calendar, $view);
         list($dataupcoming, $templateupcoming) = calendar_get_view($calendar, 'upcoming');
 
-        $elocalendarhtml .= $renderer->start_layout();
+        $elocalendarhtml = $renderer->start_layout();
         $elocalendarhtml .= html_writer::start_tag('div', array('class'=>' p-4 eloheightcontainer'));
         $elocalendarhtml .= $renderer->render_from_template($template, $data);
         list($data, $template) = calendar_get_footer_options($calendar);

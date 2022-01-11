@@ -1269,9 +1269,12 @@ audio.mediaplugin_html5audio {
     background-color: transparent;
 }
 
-//Moodle 3.7 Fixes
+//Moodle 3.10 Fixes
 #page-message-index #region-main {
     height: auto;
+    margin-top: 20px;
+    height: 80vh;
+    border-top: 1px solid #dee2e6;
 }
 
 .custom-select {
@@ -1634,6 +1637,15 @@ span.userbutton {
     }
 }
 
+.dropdown-toggle::after{
+    color: white;
+}
+.dropdown-toggle:hover {
+    color: rgb(220, 220, 220);
+}
+
+
+
 /////////////////////////////////////////////////////////////////////////////////
 //  Elo: End Navbar
 /////////////////////////////////////////////////////////////////////////////////
@@ -1641,6 +1653,7 @@ span.userbutton {
 /////////////////////////////////////////////////////////////////////////////////
 //  Elo: Navbar Responsive
 /////////////////////////////////////////////////////////////////////////////////
+
 @media (min-width: 0px)  and (max-width: 374px) {
     .coursecontrols.nav-item{
         display: none !important;
@@ -1650,12 +1663,20 @@ span.userbutton {
     .coursecontrols.nav-item{
         display: none !important;
     }
+    #page-header .singlebutton {
+        margin: 0 5px 5px 0;
+    }
 }
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px)  and (max-width: 767px) {
     a.navbar-brand{
         display: none !important;
     }
+
+    #page-header .singlebutton {
+        margin: 5px;
+    }
+    
 }
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) and (max-width: 991px) {

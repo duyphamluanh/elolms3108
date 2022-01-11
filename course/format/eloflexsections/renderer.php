@@ -94,6 +94,7 @@ class format_eloflexsections_renderer extends plugin_renderer_base {
         $title = '<span id="'.$eloclassnametail.'" class = "elosectiontitle-' . $level. '">'. $title . '</span>';
         $elosummary = '<div class = "elosectionsummary-' . $level. '">'. $elosummary . '</div>';
 
+        $checked = '';
         if($sectioncollapsed == FORMAT_ELOFLEXSECTIONS_EXPANDED){
             $checked = 'show';            
         }

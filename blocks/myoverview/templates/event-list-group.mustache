@@ -64,9 +64,9 @@
 <div data-region="event-list-group-container"
      data-start-day="{{$startday}}0{{/startday}}"
      data-end-day="{{$endday}}{{/endday}}"
-     class="hidden">
+     class="hidden p-2">
 
-    <h5 class="h6 m-t-1 {{$extratitleclasses}}{{/extratitleclasses}}" id="event-list-title-{{uniqid}}"><strong>{{$title}}{{/title}}</strong></h5>
+    <h5 class="h6 m-t-1 {{$extratitleclasses}}{{/extratitleclasses}}" id="event-list-title-{{uniqid}}"><p class="font-weight-bold">{{$title}}{{/title}}</p></h5>
     <ul class="list-group unstyled" data-region="event-list" aria-describedby="event-list-title-{{uniqid}}">
         {{$eventlistitems}}
             {{> block_myoverview/event-list-items }}

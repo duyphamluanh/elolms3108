@@ -1772,11 +1772,12 @@ function mod_assign_get_path_from_pluginfile(string $filearea, array $args) : ar
 function elo_update_assign_calendar($instance,$activity){
     global $DB, $CFG;
     require_once($CFG->dirroot.'/calendar/lib.php');
-    define('ASSIGN_EVENT_TYPE_DUE', 'due');
-    define('ASSIGN_EVENT_TYPE_GRADINGDUE', 'gradingdue');
-    define('CALENDAR_EVENT_TYPE_ACTION', 1);
+    // define('ASSIGN_EVENT_TYPE_DUE', 'due');//Constant ASSIGN_EVENT_TYPE_DUE already defined in locallib
+    // define('ASSIGN_EVENT_TYPE_GRADINGDUE', 'gradingdue');Constant ASSIGN_EVENT_TYPE_DUE already defined in locallib
+    // define('CALENDAR_EVENT_TYPE_ACTION', 1);Constant ASSIGN_EVENT_TYPE_DUE already defined in calendar
     $eventtype = ASSIGN_EVENT_TYPE_DUE;
     if ($instance->duedate) {
+        $event = new stdClass();
         $event->name = get_string('calendardue', 'assign', $instance->name);
         $intro = $instance->intro;
         $event->description = array(

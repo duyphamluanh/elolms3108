@@ -42,13 +42,13 @@
 <li class="list-group-item event-list-item" data-region="event-list-item">
     <div class="row">
         <div class="col-lg-7 col-xl-8">
-            <div class="d-inline-block icon-large event-icon">
+            <div class="d-inline-block icon-large event-icon align-top">
                 {{#icon}}{{#pix}} {{key}}, {{component}}, {{alttext}} {{/pix}}{{/icon}}
             </div>
             <div class="d-inline-block event-name-container">
                 <a class="event-name text-truncate" href="{{{url}}}">{{{name}}}</a>
-                <p class="small text-muted text-truncate m-b-0">
-                    {{#userdate}} {{timesort}}, {{#str}} strftimerecent {{/str}} {{/userdate}}
+                <p class="small text-muted text-truncate mb-0 ">
+                    {{#userdate}} {{timesort}}, {{#str}} strftimerecent, core_langconfig {{/str}} {{/userdate}}
                 </p>
             </div>
         </div>
@@ -57,7 +57,10 @@
                 <a href="{{{action.url}}}">{{action.name}}</a>
                 {{#action.itemcount}}
                     {{#action.showitemcount}}
-                        <span class="tag tag-pill tag-default">{{.}}</span>
+                        <span class="badge badge-secondary">{{action.itemcount}}</span>
+                        {{! <span class="tag tag-pill tag-default">
+                        {{.}}
+                        {{! </span> }}
                     {{/action.showitemcount}}
                 {{/action.itemcount}}
             {{/action.actionable}}

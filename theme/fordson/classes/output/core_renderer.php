@@ -146,7 +146,23 @@ class core_renderer extends \theme_boost\output\core_renderer {
         // $headerbgimgurl = $PAGE->theme->setting_file_url('headerdefaultimage', 'headerdefaultimage', true);
         // $defaultimgurl = $OUTPUT->image_url('headerbg', 'theme');
         $headerbgimgurl = $PAGE->theme->setting_file_url('headerdefaultimage', 'headerdefaultimage', true);
-        if (empty($courseimage) && !($COURSE->image)){
+        global $USER;
+        if($USER->id>0){
+            if(function_exists('profile_get_user_fields_with_data_by_category')){
+                $categories = profile_get_user_fields_with_data_by_category($USER->id);
+            }
+            foreach ($categories as $categoryid => $fields) {
+                foreach ($fields as $formfield) {
+                    if ($formfield->is_visible() and !$formfield->is_empty()) {
+                        if($formfield->field->name == 'Hình cover') {
+                            $usercoverimagepath = $formfield->get_cover_image_path();
+                        }
+                    }
+                }
+            }
+        }
+
+        if (empty($courseimage) && !isset($COURSE->image)){
             if(isset($usercoverimagepath)){
                 $headerbgimgurl = $usercoverimagepath;
                 $headerbg = $headerbgimgurl;
@@ -168,7 +184,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
         if(!$headerbgimgurl){
             $headerbgimgurl = $CFG->wwwroot. '/theme/fordson/pix/headerbgimg.jpg';
         }
-        if(!$usercoverimagepath ){
+        if(!isset($usercoverimagepath)){
             $usercoverimagepath = $CFG->wwwroot. '/theme/fordson/pix/usercoverimage.png';
         }
         if (isloggedin() and isguestuser())

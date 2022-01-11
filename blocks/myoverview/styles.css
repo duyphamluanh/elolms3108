@@ -1032,7 +1032,8 @@
     display: flex;
   }
   [id^="courses-view-"] ul.nav-pills .nav-item, [id^="timeline-view-"] ul.nav-pills .nav-item{
-    margin: 0;
+    margin: 0 40px;
+    display: block;
   } 
   .progress-chart-container{
     margin-right: 16px;
